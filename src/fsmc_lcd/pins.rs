@@ -216,6 +216,64 @@ impl DataPins16 {
 }
 impl sealed::Sealed for DataPins16 {}
 
+#[allow(unused)]
+pub struct DataPins8 {
+    pub d0: alt::D0,
+    pub d1: alt::D1,
+    pub d2: alt::D2,
+    pub d3: alt::D3,
+    pub d4: alt::D4,
+    pub d5: alt::D5,
+    pub d6: alt::D6,
+    pub d7: alt::D7,
+}
+
+impl DataPins for DataPins8 {}
+
+impl DataPins8 {
+    #[allow(clippy::too_many_arguments)]
+    #[inline(always)]
+    pub fn new(
+        d0: impl Into<alt::D0>,
+        d1: impl Into<alt::D1>,
+        d2: impl Into<alt::D2>,
+        d3: impl Into<alt::D3>,
+        d4: impl Into<alt::D4>,
+        d5: impl Into<alt::D5>,
+        d6: impl Into<alt::D6>,
+        d7: impl Into<alt::D7>,
+    ) -> Self {
+        Self {
+            d0: d0.into(),
+            d1: d1.into(),
+            d2: d2.into(),
+            d3: d3.into(),
+            d4: d4.into(),
+            d5: d5.into(),
+            d6: d6.into(),
+            d7: d7.into(),
+        }
+    }
+
+    pub fn split(
+        self,
+    ) -> (
+        alt::D0,
+        alt::D1,
+        alt::D2,
+        alt::D3,
+        alt::D4,
+        alt::D5,
+        alt::D6,
+        alt::D7,
+    ) {
+        (
+            self.d0, self.d1, self.d2, self.d3, self.d4, self.d5, self.d6, self.d7,
+        )
+    }
+}
+impl sealed::Sealed for DataPins8 {}
+
 /// A set of pins used to interface with an LCD
 ///
 /// The `address` and `enable` fields can be individual pins, or tuples of 2, 3, or 4 pins.
